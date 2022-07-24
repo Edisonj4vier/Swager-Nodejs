@@ -12,7 +12,10 @@ const main = async () => {
     await connectToMongodb();
     const server = express();
     const specs = swaggerJSDoc(options);
+    const cors = require('cors');
+    const whiteList = ['http://localhost:4200'];
     server.use(express.json());
+    server.use(cors({origin: whiteList}));
     server.use('/games',SwaggerUI.serve,SwaggerUI.setup(specs));
     router(server);
     

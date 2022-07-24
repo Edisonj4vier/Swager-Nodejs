@@ -24,7 +24,10 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, database_1.connectToMongodb)();
     const server = (0, express_1.default)();
     const specs = (0, swagger_jsdoc_1.default)(swagger_1.options);
+    const cors = require('cors');
+    const whiteList = ['http://localhost:4200'];
     server.use(express_1.default.json());
+    server.use(cors({ origin: whiteList }));
     server.use('/games', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(specs));
     (0, router_1.router)(server);
     //Start server
