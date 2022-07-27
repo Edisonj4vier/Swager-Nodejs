@@ -25,7 +25,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     const server = (0, express_1.default)();
     const specs = (0, swagger_jsdoc_1.default)(swagger_1.options);
     const cors = require('cors');
-    const whiteList = ['http://localhost:4200'];
+    const whiteList = ['http://localhost:3000', 'http://localhost:4200'];
     server.use(express_1.default.json());
     server.use(cors({ origin: whiteList }));
     server.use('/games', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(specs));

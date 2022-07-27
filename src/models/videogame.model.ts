@@ -10,6 +10,7 @@ export interface IVideogame {
 }
 
 //Schema
+const mongoosePaginate = require('mongoose-paginate-v2');
 const videogameSchema = new Schema<IVideogame>({
     title: {type: String},
     description: {type: String},
@@ -19,5 +20,6 @@ const videogameSchema = new Schema<IVideogame>({
 });
 
 //Model 
+videogameSchema.plugin(mongoosePaginate);
 const Videogame = model<IVideogame>('Videogame',videogameSchema);
 export {Videogame}
